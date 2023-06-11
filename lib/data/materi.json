@@ -1,0 +1,17 @@
+{
+  "Materi" :[
+    {
+      "title" : "Nun Mati",
+      "body" : [
+        {
+          "sub_title" :"Idzhar",
+          "description" : "Menurut bahasa, idzhar adalah bayan atau jelas, sedangkan menurut istilah adalah membaca nun mati (نْ ) atau tanwin ( ـَــًـ , ـِــٍـ , ـُــٌـ ) dengan jelas tanpa suara dengung atau disamarkan.\n Ada enam huruf izhar, yaitu hamzah (ء), kha (ح), ha (خ), ain (ع), ghain (غ), dan ha' (هـ). \nContoh bacaan izhar: مَآ أَغْنَىٰ عَنْهُ"
+        },
+        {
+          "sub_title" :"Idhgam",
+          "description" : "Secara bahasa, idgham artinya idkhal atau memasukkan, sedangkan secara istilah adalah menyamarkan atau meleburkan nun mati atau tanwin dengan huruf-huruf idgham sehingga seolah-olah menjadi satu huruf yang bertasydid. \nIdgham terbagi menjadi dua, sebagai berikut: Idgham bigunnah yaitu jika nun mati atau tanwin bertemu dengan huruf ya (ي), nun (ن), mim (م), dan wau (و), maka harus dibaca idgham disertai dengan dengung di hidung (gunnah).\n Contoh bacaan idgham bighunnah: أَبِى لَهَبٍ وَتَبَّIdgham bilagunnah Idgham bilagunnah yaitu jika nun mati atau tanwin bertemu dengan lam (ل) dan ra (ر), maka harus dibaca idgham tanpa disertai dengung di hidung (gunnah).\n Contoh bacaan idgham bilagunnah:وَلَمْ يَكُنْ لَهُ"
+        }
+      ]
+    }
+  ]
+}
