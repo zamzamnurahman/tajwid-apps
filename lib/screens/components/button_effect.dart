@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ButtonClickUp extends StatefulWidget {
-  final Function() clicked;
+  final dynamic clicked;
   final Widget child;
   const ButtonClickUp({
     super.key,
@@ -41,7 +41,7 @@ class _ButtonClickUpState extends State<ButtonClickUp>
             _controller.forward();
             Future.delayed(const Duration(milliseconds: 150), () {
               _controller.reverse();
-              widget.clicked();
+              widget.clicked;
             });
             print('Shrink');
           },

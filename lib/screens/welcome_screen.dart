@@ -49,10 +49,22 @@ class WelcomeScreen extends StatelessWidget {
                           );
                         }),
                       ),
-                      ButtonClickUp(
-                        child: Text("Quiz"),
-                        clicked: () {},
-                      )
+                      Row(
+                        children: [
+                          ButtonClickUp(
+                            child: const Text("Quiz"),
+                            clicked: () {
+                              print("QUIZ");
+                            },
+                          ),
+                          ButtonClickUp(
+                            child: const Text("Materi"),
+                            clicked: () {
+                              print("Materi");
+                            },
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
