@@ -7,6 +7,14 @@ const Color secondaryColor = Color(0xff1E88E5);
 const Color secondaryLightColor = Color(0xff6AB7FF);
 const Color secodaryDarkColor = Color(0xff005CB2);
 
+Gradient linearGradient = const LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      primaryLightColor,
+      secondaryLightColor,
+    ]);
+
 ThemeData themeData = ThemeData(
   primaryColor: primaryColor,
   fontFamily: "Poppins",

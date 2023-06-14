@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tajwid_apps/config/theme.dart';
 import 'package:tajwid_apps/screens/welcome_screen.dart';
 
 void main() {
@@ -19,9 +20,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+      theme: themeData,
+      home: const WelcomeScreen(),
     );
   }
 }

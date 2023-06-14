@@ -1,76 +1,110 @@
 import 'package:flutter/material.dart';
-import 'package:tajwid_apps/screens/components/remove_glow.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:tajwid_apps/config/theme.dart';
+import 'package:tajwid_apps/controller/mute_controller.dart';
+import 'package:tajwid_apps/screens/components/button_effect.dart';
 
-import '../models/materi.dart';
-import 'components/button_effect.dart';
+import 'components/button_circle.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends ConsumerWidget {
   const WelcomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final isMute = ref.watch(handleMuteProvider);
     return Scaffold(
-        body: SafeArea(
-      child: FutureBuilder<List<Materi>>(
-          future: Materi().getData(),
-          builder: (_, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("Loading");
-            }
-            String title = snapshot.data![0].title!;
-            List<Body> data = snapshot.data![0].body!;
-            return Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: ScrollConfiguration(
-                behavior: NoGlowScrollBehavior(),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      ListTile(
-                        title: Text(title,
-                            style: const TextStyle(
-                              fontSize: 32,
-                              fontWeight: FontWeight.bold,
-                            )),
-                      ),
-                      Column(
-                        children: List.generate(data.length, (index) {
-                          Body body = data[index];
-                          return ListTile(
-                            title: Text(body.subTitle!,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                )),
-                            subtitle: Text(
-                              body.description!,
-                              textAlign: TextAlign.justify,
-                            ),
-                          );
-                        }),
-                      ),
-                      Row(
-                        children: [
-                          ButtonClickUp(
-                            child: const Text("Quiz"),
-                            clicked: () {
-                              print("QUIZ");
-                            },
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.black,
+          elevation: 0,
+          actions: [
+            IconButton(
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                          backgroundColor: primaryDark,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          ButtonClickUp(
-                            child: const Text("Materi"),
-                            clicked: () {
-                              print("Materi");
-                            },
+                          content: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  print(isMute);
+                                  ref
+                                      .watch(handleMuteProvider.notifier)
+                                      .changeIsMuted(!isMute);
+                                  Navigator.pop(context);
+                                },
+                                child: ButtonCircle(
+                                  isGradient: false,
+                                  child: Icon(
+                                    isMute
+                                        ? Icons.volume_down
+                                        : Icons.volume_mute,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              const ButtonCircle(
+                                isGradient: false,
+                                child: Icon(
+                                  Icons.email,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const ButtonCircle(
+                                isGradient: false,
+                                child: Icon(
+                                  Icons.info_outline,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ],
+                        ));
+              },
+              icon: const Icon(Icons.menu),
+            )
+          ],
+        ),
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: linearGradient,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SvgPicture.asset("assets/images/lafad.svg"),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtonClickUp(
+                    child: ButtonCircle(
+                      isGradient: true,
+                      child: Icon(Icons.play_arrow, size: 45),
+                    ),
                   ),
-                ),
+                  ButtonClickUp(
+                    child: ButtonCircle(
+                      isGradient: true,
+                      child: Icon(Icons.gamepad, size: 45),
+                    ),
+                  ),
+                ],
               ),
-            );
-          }),
-    ));
+              Image.asset(
+                "assets/images/illustration_cover.png",
+                height: 200,
+              ),
+            ],
+          ),
+        ));
   }
 }
