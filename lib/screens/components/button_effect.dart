@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 
 class ButtonClickUp extends StatefulWidget {
   final Widget child;
+  final void Function() click;
   const ButtonClickUp({
     super.key,
     required this.child,
+    required this.click,
   });
 
   @override
@@ -34,13 +36,14 @@ class _ButtonClickUpState extends State<ButtonClickUp>
     return Container(
         alignment: Alignment.topCenter,
         padding: const EdgeInsets.all(20),
-        child: GestureDetector(
-          onTap: () {
+        child: InkWell(
+          onTapDown: (tap) {
             _controller.forward();
             Future.delayed(const Duration(milliseconds: 150), () {
               _controller.reverse();
             });
           },
+          onTap: widget.click,
           child: ScaleTransition(
             scale: Tween<double>(
               begin: 1.0,

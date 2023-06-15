@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tajwid_apps/config/theme.dart';
 import 'package:tajwid_apps/controller/mute_controller.dart';
 import 'package:tajwid_apps/screens/components/button_effect.dart';
+import 'package:tajwid_apps/screens/materi_screen.dart';
 
 import 'components/button_circle.dart';
 
@@ -82,17 +83,26 @@ class WelcomeScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               SvgPicture.asset("assets/images/lafad.svg"),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ButtonClickUp(
-                    child: ButtonCircle(
+                    click: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const MateriScreen();
+                      }));
+                    },
+                    child: const ButtonCircle(
                       isGradient: true,
                       child: Icon(Icons.play_arrow, size: 45),
                     ),
                   ),
                   ButtonClickUp(
-                    child: ButtonCircle(
+                    click: () {
+                      print("Quiz");
+                    },
+                    child: const ButtonCircle(
                       isGradient: true,
                       child: Icon(Icons.gamepad, size: 45),
                     ),
