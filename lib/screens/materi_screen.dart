@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tajwid_apps/screens/components/button_effect.dart';
+import 'package:tajwid_apps/screens/detail_materi_screen.dart';
 
 import '../config/theme.dart';
 import 'components/button_container.dart';
@@ -44,6 +45,10 @@ class MateriScreen extends StatelessWidget {
                 ButtonClickUp(
                   click: () {
                     print("Materi 1");
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const DetailMateriScreen();
+                    }));
                   },
                   child: const ButtonContainer(title: "Materi 1"),
                 ),
