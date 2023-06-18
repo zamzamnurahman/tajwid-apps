@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tajwid_apps/screens/components/button_effect.dart';
-import 'package:tajwid_apps/screens/detail_materi_screen.dart';
+import 'package:tajwid_apps/screens/detail_materi/detail_materi_mimmati_screen.dart';
+import 'package:tajwid_apps/screens/detail_materi/detail_materi_nunmati_screen.dart';
 
 import '../config/theme.dart';
 import 'components/button_container.dart';
@@ -47,14 +48,17 @@ class MateriScreen extends StatelessWidget {
                     print("Materi 1");
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return const DetailMateriScreen();
+                      return const DetailMateriNunMatiScreen();
                     }));
                   },
                   child: const ButtonContainer(title: "Nun Mati"),
                 ),
                 ButtonClickUp(
                   click: () {
-                    print("Materi 2");
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const DetailMateriMimMatiScreen();
+                    }));
                   },
                   child: const ButtonContainer(title: "Mim Mati"),
                 ),

@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tajwid_apps/controller/get_data.dart';
 import 'package:tajwid_apps/models/materi.dart';
 
-import '../config/theme.dart';
-import 'components/card_materi.dart';
+import '../../config/theme.dart';
+import '../components/card_materi.dart';
 
 final pageProvider = StateNotifierProvider<PageNotifier, int>((ref) {
   return PageNotifier();
@@ -18,15 +16,16 @@ class PageNotifier extends StateNotifier<int> {
   changePage(int newIndex) => state = newIndex;
 }
 
-class DetailMateriScreen extends ConsumerStatefulWidget {
-  const DetailMateriScreen({super.key});
+class DetailMateriNunMatiScreen extends ConsumerStatefulWidget {
+  const DetailMateriNunMatiScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
-      _DetailMateriScreenState();
+      _DetailMateriNunMatiScreenState();
 }
 
-class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
+class _DetailMateriNunMatiScreenState
+    extends ConsumerState<DetailMateriNunMatiScreen> {
   late PageController _pageCtrl;
 
   @override
