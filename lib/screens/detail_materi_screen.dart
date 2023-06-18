@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:tajwid_apps/controller/get_data.dart';
+import 'package:tajwid_apps/models/materi.dart';
 
 import '../config/theme.dart';
+import 'components/card_materi.dart';
 
 final pageProvider = StateNotifierProvider<PageNotifier, int>((ref) {
   return PageNotifier();
@@ -14,20 +18,6 @@ class PageNotifier extends StateNotifier<int> {
   changePage(int newIndex) => state = newIndex;
 }
 
-// class DetailMateriScreen extends ConsumerStatefulWidget {
-//   const DetailMateriScreen({super.key});
-
-//   @override
-//   ConsumerState<ConsumerStatefulWidget> createState() => _DetailMateriScreenState();
-// }
-
-// class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container();
-//   }
-// }
 class DetailMateriScreen extends ConsumerStatefulWidget {
   const DetailMateriScreen({super.key});
 
@@ -41,6 +31,9 @@ class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
 
   @override
   void initState() {
+    WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((_) {
+      ref.watch(getDataProvider.notifier).getData();
+    });
     _pageCtrl = PageController();
     super.initState();
   }
@@ -54,6 +47,8 @@ class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
   @override
   Widget build(BuildContext context) {
     final int _index = ref.watch(pageProvider);
+    List<Materi> dataMateri = ref.watch(getDataProvider);
+    print("CEK INDEX : ${_index.toString()}");
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -61,7 +56,10 @@ class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
         elevation: 0,
         leadingWidth: 100,
         leading: InkWell(
-          onTap: () => Navigator.pop(context),
+          onTap: () {
+            ref.watch(pageProvider.notifier).changePage(0);
+            Navigator.pop(context);
+          },
           child: CircleAvatar(
             backgroundColor: primaryColor.withOpacity(0.2),
             foregroundColor: Colors.black,
@@ -189,29 +187,14 @@ class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
             ),
             Expanded(
                 child: IndexedStack(
-              index: _index,
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(
-                      // gradient: linearGradient,
-                      color: Colors.white.withOpacity(0.4),
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          offset: Offset(2, -5),
-                          blurRadius: 10,
-                        )
-                      ],
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15),
-                      )),
-                  child: Text("Judul"),
-                ),
-              ],
-            ))
+                    index: _index,
+                    children: List.generate(
+                      dataMateri[0].body!.length,
+                      (index) => CardMateri(
+                        materi: dataMateri[0].body![index],
+                        index: index,
+                      ),
+                    )))
           ],
         ),
       ),

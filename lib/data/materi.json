@@ -5,23 +5,23 @@
       "body" : [
         {
           "sub_title" :"Idzhar",
-          "description" : "Menurut bahasa, idzhar adalah bayan atau jelas, sedangkan menurut istilah adalah membaca nun mati (نْ ) atau tanwin ( ـَــًـ , ـِــٍـ , ـُــٌـ ) dengan jelas tanpa suara dengung atau disamarkan.\n Ada enam huruf izhar, yaitu hamzah (ء), kha (ح), ha (خ), ain (ع), ghain (غ), dan ha' (هـ). \nContoh bacaan izhar:",
-          "contoh" : " مَآ أَغْنَىٰ عَنْهُ"
+          "description" : "Menurut bahasa, idzhar adalah bayan atau jelas, sedangkan menurut istilah adalah membaca nun mati (نْ ) atau tanwin ( ـَــًـ , ـِــٍـ , ـُــٌـ ) dengan jelas tanpa suara dengung atau disamarkan.\n Ada enam huruf izhar, yaitu hamzah (ء), kha (ح), ha (خ), ain (ع), ghain (غ), dan ha' (هـ).",
+          "contoh" : [" مَآ أَغْنَىٰ ", "عَنْهُ"]
         },
         {
           "sub_title" :"Idhgam",
-          "description" : "Secara bahasa, idgham artinya idkhal atau memasukkan, sedangkan secara istilah adalah menyamarkan atau meleburkan nun mati atau tanwin dengan huruf-huruf idgham sehingga seolah-olah menjadi satu huruf yang bertasydid. \nIdgham terbagi menjadi dua, sebagai berikut: Idgham bigunnah yaitu jika nun mati atau tanwin bertemu dengan huruf ya (ي), nun (ن), mim (م), dan wau (و), maka harus dibaca idgham disertai dengan dengung di hidung (gunnah).\n Contoh bacaan idgham bighunnah: أَبِى لَهَبٍ وَتَبَّIdgham bilagunnah Idgham bilagunnah yaitu jika nun mati atau tanwin bertemu dengan lam (ل) dan ra (ر), maka harus dibaca idgham tanpa disertai dengung di hidung (gunnah).\n Contoh bacaan idgham bilagunnah:",
-          "contoh" : "وَلَمْ يَكُنْ لَهُ"
+          "description" : "Secara bahasa, idgham artinya idkhal atau memasukkan, sedangkan secara istilah adalah menyamarkan atau meleburkan nun mati atau tanwin dengan huruf-huruf idgham sehingga seolah-olah menjadi satu huruf yang bertasydid. \nIdgham terbagi menjadi dua, sebagai berikut: Idgham bigunnah yaitu jika nun mati atau tanwin bertemu dengan huruf ya (ي), nun (ن), mim (م), dan wau (و), maka harus dibaca idgham disertai dengan dengung di hidung (gunnah).\n Contoh bacaan idgham bighunnah: أَبِى لَهَبٍ وَتَبَّIdgham bilagunnah Idgham bilagunnah yaitu jika nun mati atau tanwin bertemu dengan lam (ل) dan ra (ر), maka harus dibaca idgham tanpa disertai dengung di hidung (gunnah).",
+          "contoh" : ["وَلَمْ ","يَكُنْ لَهُ"]
         },
         {
           "sub_title" :"Iqlab",
           "description" : "Secara bahasa, iqlab artinya memindahkan atau mengubah sesuatu dari asalnya, sedangkan menurut istilah adalah mengubah atau menggantikan nun mati menjadi mim disertai dengungan jika bertemu dengan huruf ba (ب).\n Contoh bacaan iqlab:",
-          "contoh" : "مِنْۢ بَعْدِ"
+          "contoh" : ["بَعْدِ","مِنْۢ"]
         },
         {
           "sub_title" :"Ikhfa",
           "description" : "Secara bahasa, ikhfa artinya satru yang berarti menutupi atau menyamarkan. Adapun menurut istilah, ikhfa adalah menyamarkan nun mati atau tanwin karena muncul suara dengungan (gunnah) jika bertemu dengan 15 huruf. \n Huruf ikhfa antara lain kaf ( ك ), qaf ( ق ), fa' ( ف ), zha ( ظ ), tha ( ط ), dhad ( ض ), shad ( ص ), syin ( ش ), sin ( س ), za' ( ز ), dzal ( ذ ), dal ( د ), jim ( ج ), tsa' ( ث ), dan ta' ( ت ). \nContoh bacaan ikhfa:  ",
-          "contoh" : " لَقَدْ خَلَقْنَا ٱلْإِنسَٰنَ"
+          "contoh" : [" لَقَدْ خَلَقْنَا ٱلْإِ","نسَٰنَ"]
         }
       ]
     },
@@ -30,15 +30,18 @@
       "body" : [
         {
           "sub_title" :"Idzhar Syafawi",
-          "description" : "Izhar Syafawi yaitu bagian dari ilmu tajwid yang terjadi ketika huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan seluruh huruf hijaiyah, selain huruf hijaiyah Mim dan huruf hijaiyah Ba.\n Contohnya : \n  هُمْ نَائِمُوْنَ "
+          "description" : "Izhar Syafawi yaitu bagian dari ilmu tajwid yang terjadi ketika huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan seluruh huruf hijaiyah, selain huruf hijaiyah Mim dan huruf hijaiyah Ba.",
+          "contoh" : ["هُمْ نَا"," ئِمُوْنَ "]
         },
         {
           "sub_title" :"Idhgam Mitslain",
-          "description" : "Idgham Mitslain atau Idgham Mimi merupakan hukum tajwid yang terjadi khusus untuk huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Mim yang mempunyai harakat [ مَ  مِ , مُ ]. Disebut dengan Mitslain sebab terjadinya sebiaj pertemuan dua huruf hijaiyah yang makhraj dan juga sifatnya adalah sama persis [identik], tetapi khusus bagi huruf hijaiyah Mim Sukun yang ketemu huruf Mim yang mempunyai harakat. \n Contohnya \n  لَهُمْ مَايَتَقُوْنَ"
+          "description" : "Idgham Mitslain atau Idgham Mimi merupakan hukum tajwid yang terjadi khusus untuk huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Mim yang mempunyai harakat [ مَ  مِ , مُ ]. Disebut dengan Mitslain sebab terjadinya sebiaj pertemuan dua huruf hijaiyah yang makhraj dan juga sifatnya adalah sama persis [identik], tetapi khusus bagi huruf hijaiyah Mim Sukun yang ketemu huruf Mim yang mempunyai harakat.",
+          "contoh" : ["لَهُمْ مَا","يَتَقُوْنَ"]
         },
         {
           "sub_title" :"Ikhfa Syafawi ",
-          "description" : "Ikhfa Syafawi yaitu suatu hukum tajwid yang terjadi ketika ada huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Ba ( ب ) . Ikhfa’ berarti menyembunyikan atau menyamarkan. Syafawi berarti bibir. \n Contohnya : \n  اِنَهُمْ بِدَالِكَ"
+          "description" : "Ikhfa Syafawi yaitu suatu hukum tajwid yang terjadi ketika ada huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Ba ( ب ) . Ikhfa’ berarti menyembunyikan atau menyamarkan. Syafawi berarti bibir.",
+          "contoh" : ["اِنَهُمْ بِدَ"," الِكَ"]
         }
         
       ]

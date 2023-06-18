@@ -14,6 +14,13 @@ Gradient linearGradient = const LinearGradient(
       primaryLightColor,
       secondaryLightColor,
     ]);
+Gradient linearGradientDark = const LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      primaryDark,
+      secodaryDarkColor,
+    ]);
 
 ThemeData themeData = ThemeData(
   primaryColor: primaryColor,

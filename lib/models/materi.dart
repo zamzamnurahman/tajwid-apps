@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
-
 class Materi {
   String? title;
   List<Body>? body;
@@ -25,27 +22,23 @@ class Materi {
     }
     return data;
   }
-
-  Future<List<Materi>> getData() async {
-    var json = await rootBundle.loadString("lib/data/materi.json");
-    print(json);
-    List result = jsonDecode(json)['Materi'];
-    List<Materi> dataMateri = result.map((e) => Materi.fromJson(e)).toList();
-
-    return dataMateri;
-  }
 }
 
 class Body {
   String? subTitle;
-  String? contoh;
+  List<String>? contoh;
   String? description;
 
   Body({this.subTitle, this.contoh, this.description});
 
   Body.fromJson(Map<String, dynamic> json) {
     subTitle = json['sub_title'];
-    contoh = json['contoh'];
+    if (json['contoh'] != null) {
+      contoh = [];
+      json['contoh'].forEach((v) {
+        contoh!.add(v);
+      });
+    }
     description = json['description'];
   }
 
