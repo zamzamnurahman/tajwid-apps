@@ -1,15 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 
 import '../config/theme.dart';
 
-class DetailMateriScreen extends StatefulWidget {
+final pageProvider = StateNotifierProvider<PageNotifier, int>((ref) {
+  return PageNotifier();
+});
+
+class PageNotifier extends StateNotifier<int> {
+  PageNotifier() : super(0);
+
+  changePage(int newIndex) => state = newIndex;
+}
+
+// class DetailMateriScreen extends ConsumerStatefulWidget {
+//   const DetailMateriScreen({super.key});
+
+//   @override
+//   ConsumerState<ConsumerStatefulWidget> createState() => _DetailMateriScreenState();
+// }
+
+// class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container();
+//   }
+// }
+class DetailMateriScreen extends ConsumerStatefulWidget {
   const DetailMateriScreen({super.key});
 
   @override
-  State<DetailMateriScreen> createState() => _DetailMateriScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _DetailMateriScreenState();
 }
 
-class _DetailMateriScreenState extends State<DetailMateriScreen> {
+class _DetailMateriScreenState extends ConsumerState<DetailMateriScreen> {
   late PageController _pageCtrl;
 
   @override
@@ -26,6 +53,7 @@ class _DetailMateriScreenState extends State<DetailMateriScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final int _index = ref.watch(pageProvider);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -50,12 +78,12 @@ class _DetailMateriScreenState extends State<DetailMateriScreen> {
         ),
         child: Column(
           children: [
-            Container(
+            SizedBox(
               height: 100,
               child: PageView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _pageCtrl,
-                onPageChanged: (page) {},
+                onPageChanged: ref.watch(pageProvider.notifier).changePage,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -161,27 +189,26 @@ class _DetailMateriScreenState extends State<DetailMateriScreen> {
             ),
             Expanded(
                 child: IndexedStack(
-              index: 0,
+              index: _index,
               children: [
                 Container(
                   width: double.infinity,
+                  height: double.infinity,
                   decoration: BoxDecoration(
-                      gradient: linearGradient,
-                      boxShadow: [
+                      // gradient: linearGradient,
+                      color: Colors.white.withOpacity(0.4),
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black12,
                           offset: Offset(2, -5),
                           blurRadius: 10,
                         )
                       ],
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(15),
                         topRight: Radius.circular(15),
                       )),
-                ),
-                Container(
-                  width: double.infinity,
-                  color: Colors.green,
+                  child: Text("Judul"),
                 ),
               ],
             ))

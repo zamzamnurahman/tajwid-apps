@@ -50,19 +50,19 @@ class MateriScreen extends StatelessWidget {
                       return const DetailMateriScreen();
                     }));
                   },
-                  child: const ButtonContainer(title: "Materi 1"),
+                  child: const ButtonContainer(title: "Nun Mati"),
                 ),
                 ButtonClickUp(
                   click: () {
                     print("Materi 2");
                   },
-                  child: const ButtonContainer(title: "Materi 2"),
+                  child: const ButtonContainer(title: "Mim Mati"),
                 ),
                 ButtonClickUp(
                   click: () {
                     print("Materi 3");
                   },
-                  child: const ButtonContainer(title: "Materi 3"),
+                  child: const ButtonContainer(title: "Hukum Mad"),
                 ),
               ],
             )
