@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tajwid_apps/screens/components/remove_glow.dart';
 
 import '../../config/theme.dart';
 import '../../controller/get_data.dart';
@@ -184,6 +185,33 @@ class _DetailMateriMimMatiScreenState
                                   spreadRadius: 5,
                                 )
                               ]),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                dataMateri.body![1].subTitle!.toUpperCase(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                ),
+                                width: 100,
+                                child: const IntrinsicHeight(
+                                  child: Divider(
+                                    color: Colors.black,
+                                    thickness: 2,
+                                    height: 2,
+                                  ),
+                                ),
+                              ),
+                              Text(dataMateri.title!),
+                            ],
+                          ),
                         ),
                         InkWell(
                           onTap: () {
@@ -247,6 +275,33 @@ class _DetailMateriMimMatiScreenState
                                   spreadRadius: 5,
                                 )
                               ]),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                dataMateri.body![2].subTitle!.toUpperCase(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Container(
+                                margin: const EdgeInsets.symmetric(
+                                  vertical: 10,
+                                ),
+                                width: 100,
+                                child: const IntrinsicHeight(
+                                  child: Divider(
+                                    color: Colors.black,
+                                    thickness: 2,
+                                    height: 2,
+                                  ),
+                                ),
+                              ),
+                              Text(dataMateri.title!),
+                            ],
+                          ),
                         ),
                         Container(
                           width: 30,
@@ -287,50 +342,151 @@ class _DetailMateriMimMatiScreenState
                   index: _index,
                   children: dataMateri.body!
                       .map((e) => Container(
+                            height: double.infinity,
                             width: double.infinity,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 5,
+                            ),
                             decoration: BoxDecoration(
                                 gradient: linearGradientLight,
                                 borderRadius: const BorderRadius.only(
                                   topLeft: Radius.circular(50),
                                   topRight: Radius.circular(50),
                                 )),
-                            child: Column(children: [
-                              Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                    gradient: linearGradientLight,
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(50),
-                                      topRight: Radius.circular(50),
-                                    )),
-                                child: Column(
-                                  children: [
-                                    const Icon(Icons.menu, size: 30),
-                                    Padding(
-                                      padding: const EdgeInsets.all(20),
-                                      child: Text(
+                            child: SingleChildScrollView(
+                              physics: const NeverScrollableScrollPhysics(),
+                              child: Column(children: [
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                      gradient: linearGradientLight,
+                                      borderRadius: const BorderRadius.only(
+                                        topLeft: Radius.circular(50),
+                                        topRight: Radius.circular(50),
+                                      )),
+                                  child: Column(
+                                    children: [
+                                      IconButton(
+                                          onPressed: () {
+                                            modalBottom(
+                                                context, dataMateri, _index);
+                                          },
+                                          icon: const Icon(
+                                              Icons
+                                                  .keyboard_double_arrow_up_outlined,
+                                              size: 30)),
+                                      const SizedBox(height: 10),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                            dataMateri.body![_index].subTitle!,
+                                            textAlign: TextAlign.start,
+                                            style: const TextStyle(
+                                              fontSize: 24,
+                                              fontWeight: FontWeight.bold,
+                                            )
+                                            // style: const TextStyle(fontSize: 16),
+                                            ),
+                                      ),
+                                      Text(
                                         dataMateri.body![_index].description!,
                                         textAlign: TextAlign.justify,
                                         // style: const TextStyle(fontSize: 16),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                          dataMateri.body![_index].subTitle!,
-                                          textAlign: TextAlign.start,
-                                          style: const TextStyle(fontSize: 24)
-                                          // style: const TextStyle(fontSize: 16),
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ]),
+                                    ],
+                                  ),
+                                )
+                              ]),
+                            ),
                           ))
                       .toList(),
                 ),
               ),
             ])));
+  }
+
+  Future<dynamic> modalBottom(
+    BuildContext context,
+    Materi dataMateri,
+    int _index,
+  ) {
+    return showModalBottomSheet(
+      isScrollControlled: true,
+      enableDrag: false,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(50),
+        topRight: Radius.circular(50),
+      )),
+      context: context,
+      builder: (_) => Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.7,
+        padding: const EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+            gradient: linearGradientLight,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(50),
+              topRight: Radius.circular(50),
+            )),
+        child: ScrollConfiguration(
+          behavior: NoGlowScrollBehavior(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.keyboard_double_arrow_down_outlined,
+                        size: 30)),
+                const SizedBox(height: 10),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(dataMateri.body![_index].subTitle!,
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      )
+                      // style: const TextStyle(fontSize: 16),
+                      ),
+                ),
+                Text(
+                  dataMateri.body![_index].description!,
+                  textAlign: TextAlign.justify,
+                  // style: const TextStyle(fontSize: 16),
+                ),
+                ListTile(
+                  title: const Text("Contoh : "),
+                  subtitle: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: dataMateri.body![_index].contoh![0],
+                            style: const TextStyle(
+                              color: Colors.green,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                          TextSpan(
+                            text: dataMateri.body![_index].contoh![1],
+                          ),
+                        ],
+                      )),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
