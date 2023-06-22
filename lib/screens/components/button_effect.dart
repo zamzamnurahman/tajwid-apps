@@ -35,7 +35,7 @@ class _ButtonClickUpState extends State<ButtonClickUp>
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.topCenter,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(10),
         child: InkWell(
           onTapDown: (tap) {
             _controller.forward();

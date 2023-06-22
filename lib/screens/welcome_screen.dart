@@ -99,6 +99,7 @@ class WelcomeScreen extends ConsumerWidget {
                       child: Icon(Icons.assignment, size: 30),
                     ),
                   ),
+                  const SizedBox(width: 20),
                   ButtonClickUp(
                     click: () {
                       Navigator.of(context)

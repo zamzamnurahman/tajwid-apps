@@ -4,7 +4,7 @@ import 'package:tajwid_apps/screens/components/button_effect.dart';
 
 import '../config/theme.dart';
 import 'components/button_container.dart';
-import 'quiz/quiz_nunmati_screen.dart';
+import 'quiz/quiz_detail_screen.dart';
 
 class QuizScreen extends StatelessWidget {
   const QuizScreen({super.key});
@@ -55,20 +55,30 @@ class QuizScreen extends StatelessWidget {
                     print("Quiz 1");
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return const QuizNunmatiScreen();
+                      return const QuizNunmatiScreen(0);
                     }));
                   },
                   child: const ButtonContainer(title: "Nun Mati"),
                 ),
+                const SizedBox(height: 10),
                 ButtonClickUp(
                   click: () {
                     print("Quiz 2");
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const QuizNunmatiScreen(1);
+                    }));
                   },
                   child: const ButtonContainer(title: "Mim Mati"),
                 ),
+                const SizedBox(height: 10),
                 ButtonClickUp(
                   click: () {
                     print("Quiz 3");
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return const QuizNunmatiScreen(2);
+                    }));
                   },
                   child: const ButtonContainer(title: "Hukum Mad"),
                 ),
