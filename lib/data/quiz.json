@@ -1,0 +1,79 @@
+{
+  "Quiz":[
+    {
+      "title" : "Nun Mati",
+      "data" :[
+        {
+          "description" : "Nun mati bertemu dengan ba adalah hukum?",
+          "asnwer" : 1,
+          "options" :[
+            "Ikhfa", 
+            "Iqlab",
+            "Idzhar",
+            "Idgham"
+          ],
+          "media":{
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description" : "Bacaan Hukum Nun Mati Yang berdengung adalah hukum bacaan?",
+          "asnwer" : 3,
+          "options" :[
+            "Ikhfa",
+            "Iqlab",
+            "Idzhar",
+            "Idgham"
+          ],
+          "media":{
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description" : "Saat nun mati bertemu hurup Jim hukumnya adalah ?",
+          "asnwer" : 0,
+          "options" :[
+            "Ikhfa",
+            "Iqlab",
+            "Idzhar",
+            "Idgham"
+          ],
+          "media":{
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description" : " خ adalah bagian dari hukum nun mati ?",
+          "asnwer" : 2,
+          "options" :[
+            "Ikhfa",
+            "Iqlab",
+            "Idzhar",
+            "Idgham"
+          ],
+          "media":{
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description" : "menutupi atau menyamarkan adalah arti dari hukum nun mati ?",
+          "asnwer" : 0,
+          "options" :[
+            "Ikhfa",
+            "Iqlab",
+            "Idzhar",
+            "Idgham"
+          ],
+          "media":{
+            "sound": "",
+            "image": ""
+          }
+        }
+      ]
+    }
+  ]
+}

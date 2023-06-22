@@ -31,7 +31,7 @@ class _DetailMateriNunMatiScreenState
   @override
   void initState() {
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((_) {
-      ref.watch(getDataProvider.notifier).getData();
+      ref.watch(getDataMateriProvider.notifier).getDataMateri();
     });
     _pageCtrl = PageController();
     super.initState();
@@ -46,7 +46,7 @@ class _DetailMateriNunMatiScreenState
   @override
   Widget build(BuildContext context) {
     final int _index = ref.watch(pageProvider);
-    List<Materi> dataMateri = ref.watch(getDataProvider);
+    List<Materi> dataMateri = ref.watch(getDataMateriProvider);
     print("CEK INDEX : ${_index.toString()}");
     return Scaffold(
       extendBodyBehindAppBar: true,

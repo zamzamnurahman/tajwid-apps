@@ -15,6 +15,13 @@ class MateriScreen extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Materi",
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            )),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leadingWidth: 100,

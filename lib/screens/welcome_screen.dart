@@ -5,6 +5,7 @@ import 'package:tajwid_apps/config/theme.dart';
 import 'package:tajwid_apps/controller/mute_controller.dart';
 import 'package:tajwid_apps/screens/components/button_effect.dart';
 import 'package:tajwid_apps/screens/materi_screen.dart';
+import 'package:tajwid_apps/screens/quiz_scren.dart';
 
 import 'components/button_circle.dart';
 
@@ -95,16 +96,19 @@ class WelcomeScreen extends ConsumerWidget {
                     },
                     child: const ButtonCircle(
                       isGradient: true,
-                      child: Icon(Icons.play_arrow, size: 45),
+                      child: Icon(Icons.assignment, size: 30),
                     ),
                   ),
                   ButtonClickUp(
                     click: () {
-                      print("Quiz");
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return const QuizScreen();
+                      }));
                     },
                     child: const ButtonCircle(
                       isGradient: true,
-                      child: Icon(Icons.gamepad, size: 45),
+                      child: Icon(Icons.play_arrow, size: 40),
                     ),
                   ),
                 ],

@@ -2,23 +2,42 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tajwid_apps/models/quiz.dart';
 
 import '../models/materi.dart';
 
-final getDataProvider =
-    StateNotifierProvider<GetDataController, List<Materi>>((ref) {
-  return GetDataController();
+final getDataMateriProvider =
+    StateNotifierProvider<GetDataMateriNotifier, List<Materi>>((ref) {
+  return GetDataMateriNotifier();
 });
 
-class GetDataController extends StateNotifier<List<Materi>> {
-  GetDataController() : super([]);
+class GetDataMateriNotifier extends StateNotifier<List<Materi>> {
+  GetDataMateriNotifier() : super([]);
 
-  void getData() async {
+  void getDataMateri() async {
     var json = await rootBundle.loadString("lib/data/materi.json");
     print(json);
     List result = jsonDecode(json)['Materi'];
     List<Materi> dataMateri = result.map((e) => Materi.fromJson(e)).toList();
 
     state = dataMateri;
+  }
+}
+
+final getDataQuizProvider =
+    StateNotifierProvider<GetDataQuizNotifier, List<Quiz>>((ref) {
+  return GetDataQuizNotifier();
+});
+
+class GetDataQuizNotifier extends StateNotifier<List<Quiz>> {
+  GetDataQuizNotifier() : super([]);
+
+  void getDataQuiz() async {
+    var json = await rootBundle.loadString("lib/data/quiz.json");
+    print(json);
+    List result = jsonDecode(json)['Quiz'];
+    List<Quiz> data = result.map((e) => Quiz.fromJson(e)).toList();
+
+    state = data;
   }
 }

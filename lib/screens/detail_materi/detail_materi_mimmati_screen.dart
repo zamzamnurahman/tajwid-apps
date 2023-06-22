@@ -32,7 +32,7 @@ class _DetailMateriMimMatiScreenState
   void initState() {
     _pageCtrl = PageController();
     WidgetsFlutterBinding.ensureInitialized().addPostFrameCallback((_) {
-      ref.watch(getDataProvider.notifier).getData();
+      ref.watch(getDataMateriProvider.notifier).getDataMateri();
     });
     super.initState();
   }
@@ -40,7 +40,7 @@ class _DetailMateriMimMatiScreenState
   @override
   Widget build(BuildContext context) {
     final int _index = ref.watch(pageProvider);
-    Materi dataMateri = ref.watch(getDataProvider)[1];
+    Materi dataMateri = ref.watch(getDataMateriProvider)[1];
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
