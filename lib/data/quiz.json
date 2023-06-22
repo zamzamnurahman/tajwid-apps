@@ -149,6 +149,81 @@
           }
         }
       ]
+    },
+    {
+      "title": "Hukum Mad",
+      "data": [
+        {
+          "description": "Hukum Mad Terbagi menjadi berapa bagian ?",
+          "asnwer": 1,
+          "options": [
+            { "option": "4", "status": "none" },
+            { "option": "2", "status": "none" },
+            { "option": "7", "status": "none" },
+            { "option": "3", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "Mad Asli mempunyai nama lain yaitu ?",
+          "asnwer": 3,
+          "options": [
+            { "option": "Mad Iwadh", "status": "none" },
+            { "option": "Mad Far'i", "status": "none" },
+            { "option": "Mad Thabi'i", "status": "none" },
+            { "option": "Mad Wajib", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "Mad Wajib dibaca berapa harakat ?",
+          "asnwer": 0,
+          "options": [
+            { "option": "2", "status": "none" },
+            { "option": "4", "status": "none" },
+            { "option": "5", "status": "none" },
+            { "option": "6", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "Mad Yang di baca saat akhir dari suatu ayat adalah mad ?",
+          "asnwer": 2,
+          "options": [
+            { "option": "Wajib", "status": "none" },
+            { "option": "Jaiz", "status": "none" },
+            { "option": "Aslj", "status": "none" },
+            { "option": "Aridh lisuukun", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "berapa banyak bagian dari mad far’i ?",
+          "asnwer": 0,
+          "options": [
+            { "option": "16", "status": "none" },
+            { "option": "8", "status": "none" },
+            { "option": "20", "status": "none" },
+            { "option": "14", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        }
+      ]
     }
   ]
 }
