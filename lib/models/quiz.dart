@@ -27,7 +27,7 @@ class Quiz {
 class Data {
   String? description;
   int? asnwer;
-  List<String>? options;
+  List<Options>? options;
   Media? media;
 
   Data({this.description, this.asnwer, this.options, this.media});
@@ -35,7 +35,12 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     description = json['description'];
     asnwer = json['asnwer'];
-    options = json['options'].cast<String>();
+    if (json['options'] != null) {
+      options = <Options>[];
+      json['options'].forEach((v) {
+        options!.add(Options.fromJson(v));
+      });
+    }
     media = json['media'] != null ? Media.fromJson(json['media']) : null;
   }
 
@@ -43,10 +48,31 @@ class Data {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['description'] = description;
     data['asnwer'] = asnwer;
-    data['options'] = options;
+    if (options != null) {
+      data['options'] = options!.map((v) => v.toJson()).toList();
+    }
     if (media != null) {
       data['media'] = media!.toJson();
     }
+    return data;
+  }
+}
+
+class Options {
+  String? option;
+  String? status;
+
+  Options({this.option, this.status});
+
+  Options.fromJson(Map<String, dynamic> json) {
+    option = json['option'];
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['option'] = option;
+    data['status'] = status;
     return data;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tajwid_apps/config/theme.dart';
+import 'package:tajwid_apps/controller/answer_controller.dart';
 import 'package:tajwid_apps/screens/welcome_screen.dart';
 
 import 'components/button_effect.dart';
@@ -10,6 +11,7 @@ class ScoreScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final score = ref.read(handleAnswerProvider);
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -38,12 +40,12 @@ class ScoreScreen extends ConsumerWidget {
                   border: Border.all(
                     color: primaryColor,
                   )),
-              child: const Column(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text("SCORE", style: TextStyle(fontSize: 24)),
-                  Text("80",
-                      style: TextStyle(
+                  const Text("SCORE", style: TextStyle(fontSize: 24)),
+                  Text("$score",
+                      style: const TextStyle(
                         fontSize: 56,
                         fontWeight: FontWeight.bold,
                       ))
@@ -55,6 +57,7 @@ class ScoreScreen extends ConsumerWidget {
               padding: const EdgeInsets.all(20.0),
               child: ButtonClickUp(
                 click: () {
+                  ref.watch(handleAnswerProvider.notifier).clear();
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                         builder: (context) => const WelcomeScreen(),

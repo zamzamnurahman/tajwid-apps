@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tajwid_apps/controller/answer_controller.dart';
 import 'package:tajwid_apps/controller/get_data.dart';
 import 'package:tajwid_apps/models/quiz.dart';
 import 'package:tajwid_apps/screens/components/button_effect.dart';
@@ -10,16 +11,15 @@ import '../../config/theme.dart';
 import '../components/button_soal.dart';
 import '../components/card_description.dart';
 
-class QuizNunmatiScreen extends ConsumerStatefulWidget {
+class QuizDetail extends ConsumerStatefulWidget {
   final int number;
-  const QuizNunmatiScreen(this.number, {super.key});
+  const QuizDetail(this.number, {super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _QuizNunmatiScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _QuizDetailState();
 }
 
-class _QuizNunmatiScreenState extends ConsumerState<QuizNunmatiScreen> {
+class _QuizDetailState extends ConsumerState<QuizDetail> {
   late PageController _pageController;
   @override
   void initState() {
@@ -40,6 +40,7 @@ class _QuizNunmatiScreenState extends ConsumerState<QuizNunmatiScreen> {
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     final List<Quiz> quiz = ref.watch(getDataQuizProvider);
+    // final answer = ref.watch(answerProvider);
     return Scaffold(
       key: scaffoldKey,
       extendBodyBehindAppBar: true,
@@ -82,22 +83,74 @@ class _QuizNunmatiScreenState extends ConsumerState<QuizNunmatiScreen> {
           child: PageView(
             controller: _pageController,
             physics: const NeverScrollableScrollPhysics(),
-            children: quiz[widget.number].data!.map((e) {
-              final List<String> options = e.options!;
-              return Column(
-                children: [
-                  CardDescription(desctiption: e.description!),
-                  const SizedBox(height: 10),
-                  Column(
-                    children: options
-                        .map(
-                          (option) => ButtonClickUp(
-                            click: () {},
+            children: quiz[widget.number].data != null
+                ? quiz[widget.number].data!.map((e) {
+                    final List<Options>? options = e.options;
+                    return Column(
+                      children: [
+                        CardDescription(desctiption: e.description!),
+                        const SizedBox(height: 10),
+                        Column(
+                            children: List.generate(options!.length, (index) {
+                          String answer = options[index].status!;
+                          return ButtonClickUp(
+                            click: () {
+                              if (e.asnwer == index) {
+                                ref
+                                    .watch(handleAnswerProvider.notifier)
+                                    .increment();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    behavior: SnackBarBehavior.floating,
+                                    duration: Duration(milliseconds: 300),
+                                    backgroundColor: Colors.green,
+                                    content: Text('Benar'),
+                                  ),
+                                );
+                              } else {
+                                print(_pageController.page);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    behavior: SnackBarBehavior.floating,
+                                    duration: Duration(milliseconds: 300),
+                                    backgroundColor: Colors.red,
+                                    content: Text('Salah'),
+                                  ),
+                                );
+                              }
+
+                              if (_pageController.page == options.length - 1) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    behavior: SnackBarBehavior.floating,
+                                    backgroundColor: Colors.white,
+                                    content: Text(
+                                      'Selamat Quiz telah selesai',
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  ),
+                                );
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                      builder: (context) => const ScoreScreen(),
+                                    ),
+                                    (route) => false);
+                              } else {
+                                _pageController.nextPage(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.bounceInOut);
+                              }
+                            },
                             child: Container(
                               margin:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               decoration: BoxDecoration(
-                                  gradient: linearGradientLight,
+                                  gradient: answer == "none"
+                                      ? linearGradientLight
+                                      : null,
+                                  color: answer == "true"
+                                      ? Colors.green
+                                      : Colors.red,
                                   borderRadius: BorderRadius.circular(25),
                                   border: Border.all(color: primaryColor),
                                   boxShadow: [
@@ -109,17 +162,18 @@ class _QuizNunmatiScreenState extends ConsumerState<QuizNunmatiScreen> {
                                     )
                                   ]),
                               child: ListTile(
-                                title:
-                                    Text(option, textAlign: TextAlign.center),
+                                title: Text("${options[index].option}",
+                                    textAlign: TextAlign.center),
                               ),
                             ),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ],
-              );
-            }).toList(),
+                          );
+                        })),
+                      ],
+                    );
+                  }).toList()
+                : [
+                    Text("${quiz[widget.number].data![0]}"),
+                  ],
           ),
         ),
       ),

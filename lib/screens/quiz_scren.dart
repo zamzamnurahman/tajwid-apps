@@ -55,7 +55,7 @@ class QuizScreen extends StatelessWidget {
                     print("Quiz 1");
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return const QuizNunmatiScreen(0);
+                      return const QuizDetail(0);
                     }));
                   },
                   child: const ButtonContainer(title: "Nun Mati"),
@@ -66,7 +66,7 @@ class QuizScreen extends StatelessWidget {
                     print("Quiz 2");
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return const QuizNunmatiScreen(1);
+                      return const QuizDetail(1);
                     }));
                   },
                   child: const ButtonContainer(title: "Mim Mati"),
@@ -77,7 +77,7 @@ class QuizScreen extends StatelessWidget {
                     print("Quiz 3");
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return const QuizNunmatiScreen(2);
+                      return const QuizDetail(2);
                     }));
                   },
                   child: const ButtonContainer(title: "Hukum Mad"),

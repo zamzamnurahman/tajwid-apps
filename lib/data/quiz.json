@@ -1,74 +1,149 @@
 {
-  "Quiz":[
+  "Quiz": [
     {
-      "title" : "Nun Mati",
-      "data" :[
+      "title": "Nun Mati",
+      "data": [
         {
-          "description" : "Nun mati bertemu dengan ba adalah hukum?",
-          "asnwer" : 1,
-          "options" :[
-            "Ikhfa", 
-            "Iqlab",
-            "Idzhar",
-            "Idgham"
+          "description": "Nun mati bertemu dengan ba adalah hukum?",
+          "asnwer": 1,
+          "options": [
+            { "option": "Ikhfa", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar", "status": "none" },
+            { "option": "Idgham", "status": "none" }
           ],
-          "media":{
+          "media": {
             "sound": "",
             "image": ""
           }
         },
         {
-          "description" : "Bacaan Hukum Nun Mati Yang berdengung adalah hukum bacaan?",
-          "asnwer" : 3,
-          "options" :[
-            "Ikhfa",
-            "Iqlab",
-            "Idzhar",
-            "Idgham"
+          "description": "Bacaan Hukum Nun Mati Yang berdengung adalah hukum bacaan?",
+          "asnwer": 3,
+          "options": [
+            { "option": "Ikhfa", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar", "status": "none" },
+            { "option": "Idgham", "status": "none" }
           ],
-          "media":{
+          "media": {
             "sound": "",
             "image": ""
           }
         },
         {
-          "description" : "Saat nun mati bertemu hurup Jim hukumnya adalah ?",
-          "asnwer" : 0,
-          "options" :[
-            "Ikhfa",
-            "Iqlab",
-            "Idzhar",
-            "Idgham"
+          "description": "Saat nun mati bertemu hurup Jim hukumnya adalah ?",
+          "asnwer": 0,
+          "options": [
+            { "option": "Ikhfa", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar", "status": "none" },
+            { "option": "Idgham", "status": "none" }
           ],
-          "media":{
+          "media": {
             "sound": "",
             "image": ""
           }
         },
         {
-          "description" : " خ adalah bagian dari hukum nun mati ?",
-          "asnwer" : 2,
-          "options" :[
-            "Ikhfa",
-            "Iqlab",
-            "Idzhar",
-            "Idgham"
+          "description": " خ adalah bagian dari hukum nun mati ?",
+          "asnwer": 2,
+          "options": [
+            { "option": "Ikhfa", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar", "status": "none" },
+            { "option": "Idgham", "status": "none" }
           ],
-          "media":{
+          "media": {
             "sound": "",
             "image": ""
           }
         },
         {
-          "description" : "menutupi atau menyamarkan adalah arti dari hukum nun mati ?",
-          "asnwer" : 0,
-          "options" :[
-            "Ikhfa",
-            "Iqlab",
-            "Idzhar",
-            "Idgham"
+          "description": "menutupi atau menyamarkan adalah arti dari hukum nun mati ?",
+          "asnwer": 0,
+          "options": [
+            { "option": "Ikhfa", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar", "status": "none" },
+            { "option": "Idgham", "status": "none" }
           ],
-          "media":{
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        }
+      ]
+    },
+    {
+      "title": "Mim Mati",
+      "data": [
+        {
+          "description": "Mim Sukun ( مْ ) ketemu dengan seluruh huruf hijaiyah, selain huruf hijaiyah Mim dan huruf hijaiyah Ba adalah hukum mim mati ?",
+          "asnwer": 1,
+          "options": [
+            { "option": "Ikhfa Syafawi", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar Syafawi", "status": "none" },
+            { "option": "Idgham Mistlain", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": " مْ adalah huruf dari bacaan ?",
+          "asnwer": 3,
+          "options": [
+            { "option": "Ikhfa Syafawi", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar Syafawi", "status": "none" },
+            { "option": "Idgham Mistlain", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Ba ( ب )",
+          "asnwer": 0,
+          "options": [
+            { "option": "Ikhfa Syafawi", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar Syafawi", "status": "none" },
+            { "option": "Idgham Mistlain", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "yang bukan merupakan bagian dari hukum mim mati adalah",
+          "asnwer": 2,
+          "options": [
+            { "option": "Ikhfa Syafawi", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar Syafawi", "status": "none" },
+            { "option": "Idgham Mistlain", "status": "none" }
+          ],
+          "media": {
+            "sound": "",
+            "image": ""
+          }
+        },
+        {
+          "description": "هُمْ نَائِمُوْنَ adalah contoh bacaan dari hukum mim mati ?",
+          "asnwer": 0,
+          "options": [
+            { "option": "Ikhfa Syafawi", "status": "none" },
+            { "option": "Iqlab", "status": "none" },
+            { "option": "Idzhar Syafawi", "status": "none" },
+            { "option": "Idgham Mistlain", "status": "none" }
+          ],
+          "media": {
             "sound": "",
             "image": ""
           }
