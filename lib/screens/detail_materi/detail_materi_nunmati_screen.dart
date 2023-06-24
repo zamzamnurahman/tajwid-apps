@@ -45,9 +45,9 @@ class _DetailMateriNunMatiScreenState
 
   @override
   Widget build(BuildContext context) {
-    final int _index = ref.watch(pageProvider);
+    final int index = ref.watch(pageProvider);
     List<Materi> dataMateri = ref.watch(getDataMateriProvider);
-    print("CEK INDEX : ${_index.toString()}");
+    print("CEK INDEX : ${index.toString()}");
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -186,7 +186,7 @@ class _DetailMateriNunMatiScreenState
             ),
             Expanded(
                 child: IndexedStack(
-                    index: _index,
+                    index: index,
                     children: List.generate(
                       dataMateri[0].body!.length,
                       (index) => CardMateri(

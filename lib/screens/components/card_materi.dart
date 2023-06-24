@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 
 import '../../config/theme.dart';
 import '../../models/materi.dart';
 import 'remove_glow.dart';
 
-class CardMateri extends StatelessWidget {
+final audioProvider = StateNotifierProvider<AudioNotifier, bool>((ref) {
+  return AudioNotifier();
+});
+
+class AudioNotifier extends StateNotifier<bool> {
+  AudioNotifier() : super(false);
+
+  changeSetAudio(bool newValue) => state = newValue;
+}
+
+class CardMateri extends ConsumerStatefulWidget {
   const CardMateri({
     super.key,
     required this.materi,
@@ -15,7 +27,13 @@ class CardMateri extends StatelessWidget {
   final int index;
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _CardMateriState();
+}
+
+class _CardMateriState extends ConsumerState<CardMateri> {
+  @override
   Widget build(BuildContext context) {
+    final isPlay = ref.watch(audioProvider);
     return ScrollConfiguration(
       behavior: NoGlowScrollBehavior(),
       child: ListView.builder(
@@ -48,7 +66,7 @@ class CardMateri extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          Text(materi.subTitle!,
+                          Text(widget.materi.subTitle!,
                               style: const TextStyle(
                                 fontSize: 46,
                                 color: Colors.white,
@@ -72,7 +90,7 @@ class CardMateri extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 20),
                             child: Text(
-                              materi.description!,
+                              widget.materi.description!,
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
@@ -80,24 +98,48 @@ class CardMateri extends StatelessWidget {
                             ),
                           ),
                           Center(
-                            child: RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                    text: materi.contoh![0],
-                                    style: const TextStyle(
-                                      fontSize: 34,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white70,
-                                    )),
-                                TextSpan(
-                                    text: materi.contoh![1],
-                                    style: const TextStyle(
-                                      fontSize: 34,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      decoration: TextDecoration.underline,
-                                    ))
-                              ]),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                        text: widget.materi.contoh![0],
+                                        style: const TextStyle(
+                                          fontSize: 34,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white70,
+                                        )),
+                                    TextSpan(
+                                        text: widget.materi.contoh![1],
+                                        style: const TextStyle(
+                                          fontSize: 34,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          decoration: TextDecoration.underline,
+                                        ))
+                                  ]),
+                                ),
+                                const SizedBox(width: 20),
+                                IconButton(
+                                  onPressed: () async {
+                                    final audio = AudioPlayer();
+                                    final duration = await audio.setAsset(
+                                      "assets/audio/idzhar ikhfa.m4a",
+                                    );
+                                    ref
+                                        .watch(audioProvider.notifier)
+                                        .changeSetAudio(true);
+                                    audio.setVolume(200);
+                                    audio.play().whenComplete(() => ref
+                                        .watch(audioProvider.notifier)
+                                        .changeSetAudio(false));
+                                  },
+                                  icon: !isPlay
+                                      ? const Icon(Icons.play_circle)
+                                      : const Icon(Icons.pause),
+                                )
+                              ],
                             ),
                           ),
                           const SizedBox(height: 100),

@@ -39,7 +39,7 @@ class _DetailMateriMimMatiScreenState
 
   @override
   Widget build(BuildContext context) {
-    final int _index = ref.watch(pageProvider);
+    final int index = ref.watch(pageProvider);
     Materi dataMateri = ref.watch(getDataMateriProvider)[1];
     return Scaffold(
         extendBodyBehindAppBar: true,
@@ -318,7 +318,7 @@ class _DetailMateriMimMatiScreenState
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: List.generate(3, (currentIndex) {
-                      final bool isCurrent = currentIndex == _index;
+                      final bool isCurrent = currentIndex == index;
                       return GestureDetector(
                         onTap: () {
                           _pageCtrl.animateToPage(
@@ -339,7 +339,7 @@ class _DetailMateriMimMatiScreenState
               ),
               Expanded(
                 child: IndexedStack(
-                  index: _index,
+                  index: index,
                   children: dataMateri.body!
                       .map((e) => Container(
                             height: double.infinity,
@@ -370,7 +370,7 @@ class _DetailMateriMimMatiScreenState
                                       IconButton(
                                           onPressed: () {
                                             modalBottom(
-                                                context, dataMateri, _index);
+                                                context, dataMateri, index);
                                           },
                                           icon: const Icon(
                                               Icons
@@ -380,7 +380,7 @@ class _DetailMateriMimMatiScreenState
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                            dataMateri.body![_index].subTitle!,
+                                            dataMateri.body![index].subTitle!,
                                             textAlign: TextAlign.start,
                                             style: const TextStyle(
                                               fontSize: 24,
@@ -390,7 +390,7 @@ class _DetailMateriMimMatiScreenState
                                             ),
                                       ),
                                       Text(
-                                        dataMateri.body![_index].description!,
+                                        dataMateri.body![index].description!,
                                         textAlign: TextAlign.justify,
                                         // style: const TextStyle(fontSize: 16),
                                       ),
@@ -409,7 +409,7 @@ class _DetailMateriMimMatiScreenState
   Future<dynamic> modalBottom(
     BuildContext context,
     Materi dataMateri,
-    int _index,
+    int index,
   ) {
     return showModalBottomSheet(
       isScrollControlled: true,
@@ -444,7 +444,7 @@ class _DetailMateriMimMatiScreenState
                 const SizedBox(height: 10),
                 Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(dataMateri.body![_index].subTitle!,
+                  child: Text(dataMateri.body![index].subTitle!,
                       textAlign: TextAlign.start,
                       style: const TextStyle(
                         fontSize: 24,
@@ -454,7 +454,7 @@ class _DetailMateriMimMatiScreenState
                       ),
                 ),
                 Text(
-                  dataMateri.body![_index].description!,
+                  dataMateri.body![index].description!,
                   textAlign: TextAlign.justify,
                   // style: const TextStyle(fontSize: 16),
                 ),
@@ -470,14 +470,14 @@ class _DetailMateriMimMatiScreenState
                         ),
                         children: [
                           TextSpan(
-                            text: dataMateri.body![_index].contoh![0],
+                            text: dataMateri.body![index].contoh![0],
                             style: const TextStyle(
                               color: Colors.green,
                               decoration: TextDecoration.underline,
                             ),
                           ),
                           TextSpan(
-                            text: dataMateri.body![_index].contoh![1],
+                            text: dataMateri.body![index].contoh![1],
                           ),
                         ],
                       )),
