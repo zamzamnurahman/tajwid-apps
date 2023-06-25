@@ -66,6 +66,7 @@ flutter:
     - assets/
     - assets/audio/
     - assets/images/
+    - lib/data/materi_hukum_mad.json
     - lib/data/materi.json
     - lib/data/quiz.json
   #   - images/a_dot_ham.jpeg

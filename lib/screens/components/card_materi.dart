@@ -123,14 +123,15 @@ class _CardMateriState extends ConsumerState<CardMateri> {
                                 const SizedBox(width: 20),
                                 IconButton(
                                   onPressed: () async {
+                                    print(widget.materi.sound!);
                                     final audio = AudioPlayer();
                                     final duration = await audio.setAsset(
-                                      "assets/audio/idzhar ikhfa.m4a",
+                                      widget.materi.sound!,
                                     );
                                     ref
                                         .watch(audioProvider.notifier)
                                         .changeSetAudio(true);
-                                    audio.setVolume(200);
+                                    audio.setVolume(1000);
                                     audio.play().whenComplete(() => ref
                                         .watch(audioProvider.notifier)
                                         .changeSetAudio(false));

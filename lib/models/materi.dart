@@ -26,27 +26,25 @@ class Materi {
 
 class Body {
   String? subTitle;
-  List<String>? contoh;
   String? description;
+  List<String>? contoh;
+  String? sound;
 
-  Body({this.subTitle, this.contoh, this.description});
+  Body({this.subTitle, this.description, this.contoh, this.sound});
 
   Body.fromJson(Map<String, dynamic> json) {
     subTitle = json['sub_title'];
-    if (json['contoh'] != null) {
-      contoh = [];
-      json['contoh'].forEach((v) {
-        contoh!.add(v);
-      });
-    }
     description = json['description'];
+    contoh = json['contoh'].cast<String>();
+    sound = json['sound'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['sub_title'] = subTitle;
-    data['contoh'] = contoh;
     data['description'] = description;
+    data['contoh'] = contoh;
+    data['sound'] = sound;
     return data;
   }
 }
