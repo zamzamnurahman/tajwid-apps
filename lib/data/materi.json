@@ -35,20 +35,20 @@
         {
           "sub_title": "Idzhar Syafawi",
           "description": "Izhar Syafawi yaitu bagian dari ilmu tajwid yang terjadi ketika huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan seluruh huruf hijaiyah, selain huruf hijaiyah Mim dan huruf hijaiyah Ba.",
-          "contoh": ["هُمْ نَا", " ئِمُوْنَ "],
-          "audio": ""
+          "contoh": ["","اَلْحَمْدُ", " لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ"],
+          "sound": "assets/audio/idzhar syafawi.mp3"
         },
         {
           "sub_title": "Idhgam Mitslain",
           "description": "Idgham Mitslain atau Idgham Mimi merupakan hukum tajwid yang terjadi khusus untuk huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Mim yang mempunyai harakat [ مَ  مِ , مُ ]. Disebut dengan Mitslain sebab terjadinya sebiaj pertemuan dua huruf hijaiyah yang makhraj dan juga sifatnya adalah sama persis [identik], tetapi khusus bagi huruf hijaiyah Mim Sukun yang ketemu huruf Mim yang mempunyai harakat.",
-          "contoh": ["لَهُمْ مَا", "يَتَقُوْنَ"],
-          "audio": ""
+          "contoh": ["اِنَّهَا"," عَلَيۡهِمۡ مُّؤ", " ۡصَدَةٌَ"],
+          "sound": "assets/audio/idgam mitslain.mp3"
         },
         {
           "sub_title": "Ikhfa Syafawi ",
           "description": "Ikhfa Syafawi yaitu suatu hukum tajwid yang terjadi ketika ada huruf hijaiyah Mim Sukun ( مْ ) ketemu dengan huruf hijaiyah Ba ( ب ) . Ikhfa’ berarti menyembunyikan atau menyamarkan. Syafawi berarti bibir.",
-          "contoh": ["اِنَهُمْ بِدَ", " الِكَ"],
-          "audio": ""
+          "contoh": ["اَلَمۡ"," يَعۡلَمۡ بِاَؕ", " نَّ اللّٰهَ يَرٰىٌَ"],
+          "sound": "assets/audio/ikhfa syafi.mp3"
         }
       ]
     }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:tajwid_apps/screens/components/remove_glow.dart';
 
 import '../../config/theme.dart';
 import '../../controller/get_data.dart';
 import '../../models/materi.dart';
+import '../components/card_materi.dart';
 
 final pageProvider = StateNotifierProvider<PageNotifier, int>((ref) {
   return PageNotifier();
@@ -41,6 +43,7 @@ class _DetailMateriMimMatiScreenState
   Widget build(BuildContext context) {
     final int index = ref.watch(pageProvider);
     Materi dataMateri = ref.watch(getDataMateriProvider)[1];
+    final isPlay = ref.watch(audioProvider);
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -369,8 +372,8 @@ class _DetailMateriMimMatiScreenState
                                     children: [
                                       IconButton(
                                           onPressed: () {
-                                            modalBottom(
-                                                context, dataMateri, index);
+                                            modalBottom(context, dataMateri,
+                                                index, isPlay);
                                           },
                                           icon: const Icon(
                                               Icons
@@ -410,6 +413,7 @@ class _DetailMateriMimMatiScreenState
     BuildContext context,
     Materi dataMateri,
     int index,
+    bool isPlay,
   ) {
     return showModalBottomSheet(
       isScrollControlled: true,
@@ -420,72 +424,107 @@ class _DetailMateriMimMatiScreenState
         topRight: Radius.circular(50),
       )),
       context: context,
-      builder: (_) => Container(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height * 0.7,
-        padding: const EdgeInsets.all(20.0),
-        decoration: BoxDecoration(
-            gradient: linearGradientLight,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(50),
-              topRight: Radius.circular(50),
-            )),
-        child: ScrollConfiguration(
-          behavior: NoGlowScrollBehavior(),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(Icons.keyboard_double_arrow_down_outlined,
-                        size: 30)),
-                const SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(dataMateri.body![index].subTitle!,
-                      textAlign: TextAlign.start,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      )
+      builder: (context) => StatefulBuilder(
+        builder: (context, state) {
+          return Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).size.height * 0.7,
+            padding: const EdgeInsets.all(20.0),
+            decoration: BoxDecoration(
+                gradient: linearGradientLight,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(50),
+                  topRight: Radius.circular(50),
+                )),
+            child: ScrollConfiguration(
+              behavior: NoGlowScrollBehavior(),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: const Icon(Icons.keyboard_double_arrow_down_outlined,
+                            size: 30)),
+                    const SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(dataMateri.body![index].subTitle!,
+                          textAlign: TextAlign.start,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          )
+                          // style: const TextStyle(fontSize: 16),
+                          ),
+                    ),
+                    Text(
+                      dataMateri.body![index].description!,
+                      textAlign: TextAlign.justify,
                       // style: const TextStyle(fontSize: 16),
-                      ),
-                ),
-                Text(
-                  dataMateri.body![index].description!,
-                  textAlign: TextAlign.justify,
-                  // style: const TextStyle(fontSize: 16),
-                ),
-                ListTile(
-                  title: const Text("Contoh : "),
-                  subtitle: RichText(
-                      textAlign: TextAlign.center,
-                      text: TextSpan(
-                        style: const TextStyle(
-                          fontSize: 40,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    ),
+                    ListTile(
+                      title: const Text("Contoh : "),
+                      subtitle: Wrap(
+                        alignment: WrapAlignment.end,
                         children: [
-                          TextSpan(
-                            text: dataMateri.body![index].contoh![0],
-                            style: const TextStyle(
-                              color: Colors.green,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                          TextSpan(
-                            text: dataMateri.body![index].contoh![1],
-                          ),
+                          RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(
+                                style: const TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: dataMateri.body![index].contoh![0],
+                                  ),
+                                  TextSpan(
+                                    text: dataMateri.body![index].contoh![1],
+                                    style: const TextStyle(
+                                      color: Colors.green,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: dataMateri.body![index].contoh![2],
+                                  ),
+                                ],
+                              )),
+                          if (!isPlay)
+                            IconButton(
+                                onPressed: () async {
+                                  print("PLAY ${isPlay}");
+                                  state((){
+                                   isPlay = true;
+                                  });
+
+                                  final audio = AudioPlayer();
+                                  final duration = await audio.setAsset(
+                                    dataMateri.body![index].sound!,
+                                  );
+
+                                  audio.setVolume(5.0);
+                                  audio.play().whenComplete(() {
+                                    state((){
+                                      isPlay = false;
+                                    });
+                                  });
+
+
+                                },
+                                icon: const Icon(Icons.play_circle))
                         ],
-                      )),
-                )
-              ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        }
       ),
     );
   }
