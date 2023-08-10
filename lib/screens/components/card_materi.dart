@@ -98,8 +98,7 @@ class _CardMateriState extends ConsumerState<CardMateri> {
                             ),
                           ),
                           Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                            child: Wrap(
                               children: [
                                 RichText(
                                   text: TextSpan(children: [
@@ -117,11 +116,18 @@ class _CardMateriState extends ConsumerState<CardMateri> {
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white,
                                           decoration: TextDecoration.underline,
+                                        )),
+                                    TextSpan(
+                                        text: widget.materi.contoh![2],
+                                        style: const TextStyle(
+                                          fontSize: 34,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
                                         ))
                                   ]),
                                 ),
                                 const SizedBox(width: 20),
-                                IconButton(
+                                if(!isPlay) IconButton(
                                   onPressed: () async {
                                     print(widget.materi.sound!);
                                     final audio = AudioPlayer();
@@ -131,14 +137,13 @@ class _CardMateriState extends ConsumerState<CardMateri> {
                                     ref
                                         .watch(audioProvider.notifier)
                                         .changeSetAudio(true);
-                                    audio.setVolume(1000);
+                                    audio.setVolume(5.0);
                                     audio.play().whenComplete(() => ref
                                         .watch(audioProvider.notifier)
                                         .changeSetAudio(false));
                                   },
-                                  icon: !isPlay
-                                      ? const Icon(Icons.play_circle)
-                                      : const Icon(Icons.pause),
+                                  icon: const Icon(Icons.play_circle)
+
                                 )
                               ],
                             ),

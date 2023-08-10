@@ -6,26 +6,26 @@
         {
           "sub_title": "Idzhar",
           "description": "Menurut bahasa, idzhar adalah bayan atau jelas, sedangkan menurut istilah adalah membaca nun mati (نْ ) atau tanwin ( ـَــًـ , ـِــٍـ , ـُــٌـ ) dengan jelas tanpa suara dengung atau disamarkan.\n Ada enam huruf izhar, yaitu hamzah (ء), kha (ح), ha (خ), ain (ع), ghain (غ), dan ha' (هـ).",
-          "contoh": [" مَآ أَغْنَىٰ ", "عَنْهُ"],
-          "sound": "assets/audio/idzhar ikhfa.m4a"
+          "contoh": ["مَاۤ اَغۡنٰى", " عَنۡهُ" ," مَالُهٗ وَمَا كَسَبَؕ"],
+          "sound": "assets/audio/idzhar ikhfa.mp3"
         },
         {
           "sub_title": "Idhgam",
           "description": "Secara bahasa, idgham artinya idkhal atau memasukkan, sedangkan secara istilah adalah menyamarkan atau meleburkan nun mati atau tanwin dengan huruf-huruf idgham sehingga seolah-olah menjadi satu huruf yang bertasydid. \nIdgham terbagi menjadi dua, sebagai berikut: Idgham bigunnah yaitu jika nun mati atau tanwin bertemu dengan huruf ya (ي), nun (ن), mim (م), dan wau (و), maka harus dibaca idgham disertai dengan dengung di hidung (gunnah).\n Contoh bacaan idgham bighunnah: أَبِى لَهَبٍ وَتَبَّIdgham bilagunnah Idgham bilagunnah yaitu jika nun mati atau tanwin bertemu dengan lam (ل) dan ra (ر), maka harus dibaca idgham tanpa disertai dengung di hidung (gunnah).",
-          "contoh": ["وَلَمْ ", "يَكُنْ لَهُ"],
-          "sound": "assets/audio/idhgam bilagunnah.m4a"
+          "contoh": [" وَلَمۡ ", " يَكُنۡ ٌُ"," لَّهٗ كُفُوًا اَحَد"],
+          "sound": "assets/audio/idhgam bilagunnah.mp3"
         },
         {
           "sub_title": "Iqlab",
           "description": "Secara bahasa, iqlab artinya memindahkan atau mengubah sesuatu dari asalnya, sedangkan menurut istilah adalah mengubah atau menggantikan nun mati menjadi mim disertai dengungan jika bertemu dengan huruf ba (ب).\n Contoh bacaan iqlab:",
-          "contoh": ["بَعْدِ", "مِنْۢ"],
-          "sound": "assets/audio/iqlab.m4a"
+          "contoh": ["كَلَّا", " لَيُنۡۢبَذَنَّ"," فِى الۡحُطَمَةِْۢ"],
+          "sound": "assets/audio/iqlab.mp3"
         },
         {
           "sub_title": "Ikhfa",
           "description": "Secara bahasa, ikhfa artinya satru yang berarti menutupi atau menyamarkan. Adapun menurut istilah, ikhfa adalah menyamarkan nun mati atau tanwin karena muncul suara dengungan (gunnah) jika bertemu dengan 15 huruf. \n Huruf ikhfa antara lain kaf ( ك ), qaf ( ق ), fa' ( ف ), zha ( ظ ), tha ( ط ), dhad ( ض ), shad ( ص ), syin ( ش ), sin ( س ), za' ( ز ), dzal ( ذ ), dal ( د ), jim ( ج ), tsa' ( ث ), dan ta' ( ت ). \nContoh bacaan ikhfa:  ",
-          "contoh": [" لَقَدْ خَلَقْنَا ٱلْإِ", "نسَٰنَ"],
-          "sound": ""
+          "contoh": [" فِيۡهَا", " كُتُبٌ قَيِّمَةٌ", ""],
+          "sound": "assets/audio/ikhfa.mp3"
         }
       ]
     },
