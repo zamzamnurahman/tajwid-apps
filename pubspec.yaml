@@ -39,6 +39,8 @@ dependencies:
   riverpod: ^2.3.6
   shared_preferences: ^2.1.2
   just_audio: ^0.9.34
+  flutter_mute: ^0.0.4
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:

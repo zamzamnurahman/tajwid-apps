@@ -7,6 +7,7 @@ import 'package:tajwid_apps/controller/mute_controller.dart';
 import 'package:tajwid_apps/screens/components/button_effect.dart';
 import 'package:tajwid_apps/screens/materi_screen.dart';
 import 'package:tajwid_apps/screens/quiz_scren.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'components/button_circle.dart';
 
@@ -18,6 +19,17 @@ class WelcomeScreen extends ConsumerStatefulWidget {
 }
 
 class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late TextEditingController _emailCtrl;
+  late TextEditingController _deskriptionCtrl;
+
+
+  @override
+  void initState() {
+    _emailCtrl = TextEditingController();
+    _deskriptionCtrl = TextEditingController();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     bool isMute = ref.watch(handleMuteProvider);
@@ -58,6 +70,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                       context: context,
                       builder: (_) =>
                           StatefulBuilder(builder: (context, state) {
+                            final size = MediaQuery.of(context).size;
                             return AlertDialog(
                               backgroundColor: primaryDark,
                               shape: RoundedRectangleBorder(
@@ -69,6 +82,7 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
+
                                       state(() {
                                         ref
                                             .watch(handleMuteProvider.notifier)
@@ -86,11 +100,88 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                                       ),
                                     ),
                                   ),
-                                  const ButtonCircle(
-                                    isGradient: false,
-                                    child: Icon(
-                                      Icons.email,
-                                      color: Colors.white,
+                                  GestureDetector(
+                                    onTap: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (_) {
+                                            return StatefulBuilder(
+                                              builder: (context, state) {
+                                                return AlertDialog(
+                                                  scrollable: true,
+                                                  insetPadding:
+                                                      EdgeInsets.symmetric(
+                                                          vertical:
+                                                              size.height * 0.05,
+                                                          horizontal: 25),
+                                                  title: SizedBox(
+                                                      width: size.width,
+                                                      child: const Text(
+                                                          "Kirimkan Pesan mengenai Aplikasi")),
+                                                  content: Form(
+                                                    key: _formKey,
+                                                    child: Column(
+                                                      children: [
+                                                        TextFormField(
+                                                          controller: _deskriptionCtrl,
+                                                          minLines: 3,
+                                                          maxLines: null,
+                                                          decoration: const InputDecoration(
+                                                              border: OutlineInputBorder(),
+                                                              hintText: "Masukkan Deskripsi"
+                                                          ),
+                                                          validator: (value){
+                                                            if(value!.isEmpty){
+                                                              return "harap isi";
+                                                            }
+                                                            return null;
+                                                          },
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                        onPressed: () async{
+                                                          if(_formKey.currentState!.validate()){
+                                                            String? encodeQueryParameters(Map<String, String> params) {
+                                                              return params.entries
+                                                                  .map((MapEntry<String, String> e) =>
+                                                              '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+                                                                  .join('&');
+                                                            }
+// ···
+                                                            final Uri emailLaunchUri = Uri(
+                                                              scheme: 'mailto',
+                                                              path: '1806046@itg.ac.id',
+                                                              query: encodeQueryParameters(<String, String>{
+                                                                'subject': 'Pesan penilaian Aplikasi tajwid',
+                                                                'body' : _deskriptionCtrl.text
+                                                              }),
+                                                            );
+                                                            if(await canLaunchUrl(emailLaunchUri)) {
+                                                              launchUrl(
+                                                                  emailLaunchUri);
+                                                            }
+                                                          }
+                                                        },
+                                                        child: const Text("Kirim"),
+                                                    style: ElevatedButton.styleFrom(
+                                                      backgroundColor: primaryColor,
+                                                    ),
+                                                    ),
+                                                  ],
+                                                );
+                                              }
+                                            );
+                                          });
+                                    },
+                                    child: const ButtonCircle(
+                                      isGradient: false,
+                                      child: Icon(
+                                        Icons.email,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ),
                                   GestureDetector(
