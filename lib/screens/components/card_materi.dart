@@ -6,15 +6,7 @@ import '../../config/theme.dart';
 import '../../models/materi.dart';
 import 'remove_glow.dart';
 
-final audioProvider = StateNotifierProvider<AudioNotifier, bool>((ref) {
-  return AudioNotifier();
-});
-
-class AudioNotifier extends StateNotifier<bool> {
-  AudioNotifier() : super(false);
-
-  changeSetAudio(bool newValue) => state = newValue;
-}
+final audioProvider = StateProvider.autoDispose<bool>((ref) => false);
 
 class CardMateri extends ConsumerStatefulWidget {
   const CardMateri({
@@ -127,24 +119,22 @@ class _CardMateriState extends ConsumerState<CardMateri> {
                                   ]),
                                 ),
                                 const SizedBox(width: 20),
-                                if(!isPlay) IconButton(
-                                  onPressed: () async {
-                                    print(widget.materi.sound!);
-                                    final audio = AudioPlayer();
-                                    final duration = await audio.setAsset(
-                                      widget.materi.sound!,
-                                    );
-                                    ref
-                                        .watch(audioProvider.notifier)
-                                        .changeSetAudio(true);
-                                    audio.setVolume(5.0);
-                                    audio.play().whenComplete(() => ref
-                                        .watch(audioProvider.notifier)
-                                        .changeSetAudio(false));
-                                  },
-                                  icon: const Icon(Icons.play_circle)
-
-                                )
+                                if (!isPlay)
+                                  IconButton(
+                                      onPressed: () async {
+                                        final audio = AudioPlayer();
+                                        final duration = await audio.setAsset(
+                                          widget.materi.sound!,
+                                        );
+                                        ref
+                                            .watch(audioProvider.notifier)
+                                            .state = true;
+                                        audio.setVolume(5.0);
+                                        audio.play().whenComplete(() => ref
+                                            .watch(audioProvider.notifier)
+                                            .state = false);
+                                      },
+                                      icon: const Icon(Icons.play_circle))
                               ],
                             ),
                           ),

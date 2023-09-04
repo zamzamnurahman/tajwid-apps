@@ -4,9 +4,15 @@ class HukumMad {
   Options? options;
   String? subtitle;
   String? example;
+  String? audio;
 
   HukumMad(
-      {this.title, this.deskripsi, this.options, this.subtitle, this.example});
+      {this.title,
+      this.deskripsi,
+      this.options,
+      this.subtitle,
+      this.example,
+      this.audio});
 
   HukumMad.fromJson(Map<String, dynamic> json) {
     title = json['title'];
@@ -15,18 +21,7 @@ class HukumMad {
         json['options'] != null ? Options.fromJson(json['options']) : null;
     subtitle = json['subtitle'];
     example = json['example'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['title'] = title;
-    data['deskripsi'] = deskripsi;
-    if (options != null) {
-      data['options'] = options!.toJson();
-    }
-    data['subtitle'] = subtitle;
-    data['example'] = example;
-    return data;
+    audio = json['audio'];
   }
 }
 
@@ -47,36 +42,20 @@ class Options {
       });
     }
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['description'] = description;
-    data['points'] = points;
-    if (subpoints != null) {
-      data['subpoints'] = subpoints!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
 }
 
 class Subpoints {
   String? title;
   String? description;
   String? example;
+  String? audio;
 
-  Subpoints({this.title, this.description, this.example});
+  Subpoints({this.title, this.description, this.example, this.audio});
 
   Subpoints.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     description = json['description'];
     example = json['example'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['title'] = title;
-    data['description'] = description;
-    data['example'] = example;
-    return data;
+    audio = json['audio'];
   }
 }

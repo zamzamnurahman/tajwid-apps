@@ -6,15 +6,7 @@ import 'package:tajwid_apps/models/materi.dart';
 import '../../config/theme.dart';
 import '../components/card_materi.dart';
 
-final pageProvider = StateNotifierProvider<PageNotifier, int>((ref) {
-  return PageNotifier();
-});
-
-class PageNotifier extends StateNotifier<int> {
-  PageNotifier() : super(0);
-
-  changePage(int newIndex) => state = newIndex;
-}
+final pageProvider = StateProvider<int>((ref) => 0);
 
 class DetailMateriNunMatiScreen extends ConsumerStatefulWidget {
   const DetailMateriNunMatiScreen({super.key});
@@ -47,7 +39,6 @@ class _DetailMateriNunMatiScreenState
   Widget build(BuildContext context) {
     final int index = ref.watch(pageProvider);
     List<Materi> dataMateri = ref.watch(getDataMateriProvider);
-    print("CEK INDEX : ${index.toString()}");
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -56,7 +47,7 @@ class _DetailMateriNunMatiScreenState
         leadingWidth: 100,
         leading: InkWell(
           onTap: () {
-            ref.watch(pageProvider.notifier).changePage(0);
+            ref.watch(pageProvider.notifier).state = 0;
             Navigator.pop(context);
           },
           child: CircleAvatar(
@@ -80,7 +71,9 @@ class _DetailMateriNunMatiScreenState
               child: PageView(
                 physics: const NeverScrollableScrollPhysics(),
                 controller: _pageCtrl,
-                onPageChanged: ref.watch(pageProvider.notifier).changePage,
+                onPageChanged: (index) {
+                  ref.read(pageProvider.notifier).state = index;
+                },
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

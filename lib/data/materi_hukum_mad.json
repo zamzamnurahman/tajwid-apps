@@ -15,12 +15,14 @@
           {
             "title": "",
             "description": "",
-            "example": ""
+            "example": "",
+            "audio" : null
           }
         ]
       },
       "subtitle": "Panjangnya mad ashli/mad thobi’i adalah 1 alif atau 2 harokat, baik disaat washal maupun waqaf.",
-      "example": "يَقُوْلُ"
+      "example": "يَقُوْلُ",
+      "audio" : "assets/audio/mad asli.m4a"
     },
     {
       "title": "Mad far’i",
@@ -32,72 +34,86 @@
           {
             "title": "Mad Wajib Muttashil",
             "description": "Mad wajib muttashil adalah mad ashli / mad thabi’i yang bertemu dengan hamzah dalam satu kata. Cara membaca mad wajib muttashil adalah wajib dipanjangkan 5 harakat atau 2 setengah alif.",
-            "example": "سَوَآءٌ"
+            "example": "سَوَآءٌ",
+            "audio" : "assets/audio/Mad Wajib.mp3"
           },
           {
             "title": "Mad Jaiz Munfashil",
             "description": "Mad jaiz munfashil adalah mad ashli / mad thab’i yang bertemu dengan hamzah dalam lain kata atau dalam kata yang berbeda. Cara membacanya adalah 2 – 5 harakat (1, 2, dan 2 setengah alif).",
-            "example": " بِما أُنْزِلَ"
+            "example": " بِما أُنْزِلَ",
+            "audio" : "assets/audio/Mad Jaiz.m4a"
           },
           {
             "title": "Mad Lin Atau Mad Layyin ",
             "description": "Ketika berada di akhir kalimat, ada huruf berharakat fathah dan dammah bertemu dengan huruf ya (ي) atau waw (و) bertanda sukun, kemudian di depannya lagi ada satu huruf lagi yang dimatikan karena waqaf (berhenti), hukum tajwidnya dikenal sebagai mad lin atau mad layyin.",
-            "example": "خَوْفٌ"
+            "example": "خَوْفٌ",
+            "audio" : "assets/audio/Mad Lyin.mp3"
           },
           {
             "title": "Mad Badal",
             "description": "Mad badal terjadi ketika hamzah (ء) bertemu dengan huruf-huruf mad dalam satu kata. Cara membacanya adalah dengan dipanjangkan sebanyak 2 harakat.",
-            "example": "قَالَ يَا آدَمُ"
+            "example": "قَالَ يَا آدَمُ",
+            "audio" : "assets/audio/Mad Badal.m4a"
           },
           {
             "title": "Mad Tamkin",
             "description": "Mad Tamkin adalah mad pada huruf ya (ي) yang bertasydid dan juga berkasrah (ي). Cara membaca mad tamkin adalah dengan panjang 2 harakat. ",
-            "example": "حُييتم"
+            "example": "حُييتم",
+            "audio": "assets/audio/Mad Tamkin.m4a"
           },
           {
             "title": "Mad Iwadh",
             "description": "Ketika akan waqaf atau berhenti pada huruf tanwin fathatain, hukum tajwidnya adalah mad 'iwadh. Sebagai pengecualian, mad 'iwadh tidak terjadi pada huruf ta' marbutah. Cara membaca mad 'iwadh adalah tanwin (an) dihilangkan dan dibaca seperti fathah biasa (bunyi a) dengan panjang 2 harakat.  ",
-            "example": "أجراً عظيماً"
+            "example": "أجراً عظيماً",
+            "audio" : "assets/audio/Mad Iwadh.m4a"
           },
           {
             "title": "Mad Aridh Lissukun",
             "description": "Mad arid lissukun terjadi ketika berhenti di akhir ayat (waqaf) sehingga mematikan huruf terakhir, sedangkan sebelum huruf yang dimatikan terdapat mad asli atau mad thabi'i. Cara membaca mad arid lissukun adalah dengan panjang 2, 4, atau 6 rakaat.",
-            "example": "بَصِيْرٌ"
+            "example": "بَصِيْرٌ",
+            "audio":"assets/audio/Mad Aridh Lis sukun.m4a"
           },
           {
             "title": "Mad Farq",
             "description": "Mad farq terjadi ketika ada pertemuan antara mad badal dan huruf yang bertasydid. Bacaan mad farq dilafalkan dengan panjang 6 harakat. Dinamakan mad farq karena untuk membedakan bahawa hamzah tersebut adalah hamzah (ءَ) untuk bertanya 'Apakah?' dalam bahasa Arab. Dengan demikian, nama lain dari mad farq adalah mad istifham atau mad pertanyaan.",
-            "example": "قُلْ ءَآلذَّكَرَيْنِ"
+            "example": "قُلْ ءَآلذَّكَرَيْنِ",
+            "audio":""
           },
           {
             "title": "Mad Silah Qasirah",
             "description": "Mad silah qasirah adalah mad yang terjadi apabila “huruf ha dhamir” (kata ganti) berada di antara dua huruf yang berbaris (bukan huruf mati). Cara membaca mad silah qasirah adalah dengan panjang 2 harakat.",
-            "example": "اِنَّهُ كَانَ"
+            "example": "اِنَّهُ كَانَ",
+            "audio" : "assets/audio/Mad Shilah Qasirah .m4a"
           },
           {
             "title": "Mad Silah Thawillah",
             "description": "Mad silah tawilah terjadi ketika kata ganti 'huruf ha damir' bertemu huruf hamzah. Cara membaca mad silah tawilah adalah dengan panjang 4-5 harakat.",
-            "example": "به أحداً"
+            "example": "به أحداً",
+            "audio" : "assets/audio/Mad Silah Thawillah .m4a"
           },
           {
             "title": "Mad Lazim Mutsaqqal Kilmi",
             "description": "Mad lazim mutsaqqal kilmi terjadi ketika mad asli bertemu dengan huruf bertasydid dalam satu kata. Cara membaca mad lazim mutsaqqal kilmi adalah dengan sepanjang 6 harakat.",
-            "example": "ولا الضآلّين"
+            "example": "ولا الضآلّين",
+            "audio" : "assets/audio/Mad Lazim Mutsaqqal Kilmi.m4a"
           },
           {
             "title": "Mad Lazim Mukhaffaf Kalimi",
             "description": "Mad lazim mukhaffaf kalimi terjadi ketika huruf mad bertemu dengan huruf yang berbaris sukun dalam satu kata.",
-            "example": "ءَآلْـَٰٔنَ وَقَدْ"
+            "example": "ءَآلْـَٰٔنَ وَقَدْ",
+            "audio": "assets/audio/Mad Lazim Mukhaffaf Kalimi .m4a"
           },
           {
             "title": "Mad Lazim Mutsaqqal Harfi",
             "description": "Mad lazim mutsaqqal harfi adalah mad yang terdapat pada huruf-huruf tertentu yang dieja di permulaan surah. Cara membaca mad lazim mutsaqqal harfi adalah dengan sepanjang 6 harakat.",
-            "example": "آلم"
+            "example": "آلم",
+            "audio" : "assets/audio/Mad Lazim Mutsaqqal Harfi .m4a"
           },
           {
             "title": "Mad Lazim Mukhaffaf Harfi",
             "description": "Mad lazim mukhaffaf harfi terjadi ketika membaca huruf-huruf tunggal yang terdapat pada permulaan surah-surah dalam Al-Quran. Cara membaca mad lazim mukhaffaf harfi adalah dengan panjang 6 harakat, tidak disertai idgam, kecuali huruf ain (ع) yang boleh dibaca 4/6 harakat.",
-            "example": "ن والقلم"
+            "example": "ن والقلم",
+            "audio" : "assets/audio/Mad Lazim Mukhaffaf Harfi .m4a"
           }
         ]
       },

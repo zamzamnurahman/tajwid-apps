@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:tajwid_apps/controller/get_data.dart';
 import 'package:tajwid_apps/models/hukum_mad.dart';
 import 'package:tajwid_apps/screens/components/remove_glow.dart';
@@ -7,16 +8,8 @@ import 'package:tajwid_apps/screens/detail_hukum_mad_screen.dart';
 
 import '../config/theme.dart';
 
-final navgitaionProvider =
-    StateNotifierProvider<NavigationMateriNotifier, int>((ref) {
-  return NavigationMateriNotifier();
-});
-
-class NavigationMateriNotifier extends StateNotifier<int> {
-  NavigationMateriNotifier() : super(0);
-
-  changeNavigation(int newIndex) => state = newIndex;
-}
+final navgitaionProvider = StateProvider<int>((ref) => 0);
+final audioProvider = StateProvider<bool>((ref) => false);
 
 class HukumMadScreen extends ConsumerStatefulWidget {
   const HukumMadScreen({super.key});
@@ -85,18 +78,14 @@ class _HukumMadScreenState extends ConsumerState<HukumMadScreen> {
                           title: "Mad Asli",
                           isSelect: index == 0,
                           onTap: () {
-                            ref
-                                .watch(navgitaionProvider.notifier)
-                                .changeNavigation(0);
+                            ref.watch(navgitaionProvider.notifier).state = 0;
                           },
                         ),
                         NavigationMateri(
                           title: "Mad Far'i",
                           isSelect: index == 1,
                           onTap: () {
-                            ref
-                                .watch(navgitaionProvider.notifier)
-                                .changeNavigation(1);
+                            ref.watch(navgitaionProvider.notifier).state = 1;
                           },
                         ),
                       ],
@@ -252,13 +241,35 @@ class MadAsliWidget extends StatelessWidget {
             const SizedBox(height: 20),
             Align(
               alignment: Alignment.center,
-              child: Text(data[0].example!,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 34,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  )),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(data[0].example!,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 34,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      )),
+                  Consumer(
+                    builder: (_, ref, __) => ref.watch(audioProvider)
+                        ? const SizedBox()
+                        : IconButton(
+                            onPressed: () async {
+                              final audio = AudioPlayer();
+                              final duration = await audio.setAsset(
+                                data[0].audio!,
+                              );
+                              ref.watch(audioProvider.notifier).state = true;
+                              audio.setVolume(5.0);
+                              audio.play().whenComplete(() => ref
+                                  .watch(audioProvider.notifier)
+                                  .state = false);
+                            },
+                            icon: const Icon(Icons.play_circle)),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
